@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@cinnabar-forge/eslint-plugin": "0.6.1",
-    "@cinnabar-forge/meta": "0.3.0",
+    "@cinnabar-forge/meta": "0.3.1",
     "@types/chai": "4.3.16",
     "@types/mocha": "10.0.7",
     "@types/node": "20.14.12",
