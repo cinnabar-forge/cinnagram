@@ -1,3 +1,7 @@
-import { sendTelegramMessage } from "./stateless.js";
+import {
+  deleteTelegramMessage,
+  sendTelegramDocument,
+  sendTelegramMessage,
+} from "./stateless.js";
 
-export { sendTelegramMessage };
+export { deleteTelegramMessage, sendTelegramDocument, sendTelegramMessage };
