@@ -3,6 +3,15 @@ import fs from "fs";
 import path from "path";
 
 /**
+ * Create a Telegram API URL
+ * @param token
+ * @param method
+ */
+function createTelegramApiUrl(token: string, method: string) {
+  return `https://api.telegram.org/bot${token}/${method}`;
+}
+
+/**
  * Send a message to a Telegram chat
  * @param token
  * @param chatId
@@ -13,20 +22,24 @@ export async function sendTelegramMessage(
   token: string,
   chatId: number,
   text: string,
-  mode: "html" | "markdown",
-): Promise<boolean> {
-  const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage`;
+  mode: "html" | "markdown" | "markdownV2",
+): Promise<null | number> {
+  const telegramUrl = createTelegramApiUrl(token, "sendMessage");
   try {
-    await axios.post(telegramUrl, {
+    const messageResponse = await axios.post(telegramUrl, {
       chat_id: chatId,
       parse_mode: mode,
       text,
     });
-    return true;
+    if (messageResponse.status === 200 && messageResponse.data?.message_id) {
+      return messageResponse.data.message_id;
+    } else {
+      return null;
+    }
   } catch (error) {
     console.error(`Failed to send message:`, error);
   }
-  return false;
+  return null;
 }
 
 /**
@@ -42,7 +55,7 @@ export async function sendTelegramDocument(
   filePath: string,
   customFileName?: string,
 ): Promise<boolean> {
-  const telegramUrl = `https://api.telegram.org/bot${token}/sendDocument`;
+  const telegramUrl = createTelegramApiUrl(token, "sendDocument");
   try {
     const fileContent = await fs.promises.readFile(path.resolve(filePath));
     const fileName = customFileName || path.basename(filePath);
@@ -70,7 +83,7 @@ export async function deleteTelegramMessage(
   chatId: number,
   messageId: number,
 ): Promise<boolean> {
-  const telegramUrl = `https://api.telegram.org/bot${token}/deleteMessage`;
+  const telegramUrl = createTelegramApiUrl(token, "deleteMessage");
   try {
     await axios.post(telegramUrl, {
       chat_id: chatId,

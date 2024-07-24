@@ -20,19 +20,20 @@ describe("sendTelegramMessage", () => {
     sandbox.restore();
   });
 
-  it("should return true on successful message send", async () => {
-    const axiosPostStub = sandbox.stub(axios, "post").resolves();
+  it("should return message_id on successful message send", async () => {
+    const mockResponse = { status: 200, data: { message_id: 123456 } };
+    const axiosPostStub = sandbox.stub(axios, "post").resolves(mockResponse);
     const result = await sendTelegramMessage(
       "dummy_token",
       12345,
       "Hello, World!",
       "markdown",
     );
-    expect(result).to.be.true;
+    expect(result).to.equal(123456);
     expect(axiosPostStub.calledOnce).to.be.true;
   });
 
-  it("should return false on API failure", async () => {
+  it("should return null on API failure", async () => {
     sandbox.stub(axios, "post").rejects(new Error("Network error"));
     const result = await sendTelegramMessage(
       "dummy_token",
@@ -40,11 +41,12 @@ describe("sendTelegramMessage", () => {
       "Hello, World!",
       "markdown",
     );
-    expect(result).to.be.false;
+    expect(result).to.be.null;
   });
 
   it("should call axios.post with correct URL and payload", async () => {
-    const axiosPostStub = sandbox.stub(axios, "post").resolves();
+    const mockResponse = { status: 200, data: { message_id: 123456 } };
+    const axiosPostStub = sandbox.stub(axios, "post").resolves(mockResponse);
     await sendTelegramMessage("dummy_token", 12345, "Test Message", "html");
     expect(
       axiosPostStub.calledWith(
@@ -71,6 +73,30 @@ describe("sendTelegramMessage", () => {
         sinon.match.instanceOf(Error),
       ),
     ).to.be.true;
+  });
+
+  it("should return null if response status is not 200", async () => {
+    const mockResponse = { status: 404, data: {} };
+    sandbox.stub(axios, "post").resolves(mockResponse);
+    const result = await sendTelegramMessage(
+      "dummy_token",
+      12345,
+      "Hello, World!",
+      "markdown",
+    );
+    expect(result).to.be.null;
+  });
+
+  it("should return null if response data does not contain message_id", async () => {
+    const mockResponse = { status: 200, data: {} };
+    sandbox.stub(axios, "post").resolves(mockResponse);
+    const result = await sendTelegramMessage(
+      "dummy_token",
+      12345,
+      "Hello, World!",
+      "markdown",
+    );
+    expect(result).to.be.null;
   });
 });
 
