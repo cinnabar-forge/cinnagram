@@ -12,17 +12,42 @@ function createTelegramApiUrl(token: string, method: string) {
 }
 
 /**
+ * Do any API action
+ * @param token
+ * @param action
+ * @param content
+ */
+export async function doTelegramApiAction<T extends object>(
+  token: string,
+  action: string,
+  content: T,
+): Promise<boolean | null> {
+  const telegramUrl = createTelegramApiUrl(token, action);
+  try {
+    const messageResponse = await axios.post(telegramUrl, content);
+    if (messageResponse.status === 200 && messageResponse.data?.ok) {
+      return true;
+    }
+  } catch (error) {
+    console.error(`Failed to to action ${action}:`, error);
+  }
+  return null;
+}
+
+/**
  * Send a message to a Telegram chat
  * @param token
  * @param chatId
  * @param text
  * @param mode
+ * @param options
  */
 export async function sendTelegramMessage(
   token: string,
   chatId: number,
   text: string,
   mode: "html" | "markdown" | "markdownV2",
+  options?: object,
 ): Promise<null | number> {
   const telegramUrl = createTelegramApiUrl(token, "sendMessage");
   try {
@@ -30,11 +55,14 @@ export async function sendTelegramMessage(
       chat_id: chatId,
       parse_mode: mode,
       text,
+      ...options,
     });
-    if (messageResponse.status === 200 && messageResponse.data?.message_id) {
-      return messageResponse.data.message_id;
-    } else {
-      return null;
+    if (
+      messageResponse.status === 200 &&
+      messageResponse.data?.ok &&
+      messageResponse.data?.result
+    ) {
+      return messageResponse.data.result.message_id;
     }
   } catch (error) {
     console.error(`Failed to send message:`, error);

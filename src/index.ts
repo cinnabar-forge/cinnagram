@@ -1,7 +1,13 @@
 import {
   deleteTelegramMessage,
+  doTelegramApiAction,
   sendTelegramDocument,
   sendTelegramMessage,
 } from "./stateless.js";
 
-export { deleteTelegramMessage, sendTelegramDocument, sendTelegramMessage };
+export {
+  deleteTelegramMessage,
+  doTelegramApiAction,
+  sendTelegramDocument,
+  sendTelegramMessage,
+};
