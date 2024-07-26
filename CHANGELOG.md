@@ -8,6 +8,20 @@ Visit the link above to see all unreleased changes.
 
 [comment]: # (Insert new version after this line)
 
+## [0.2.0](https://github.com/cinnabar-forge/cinnagram/releases/tag/v0.2.0) — 2024-07-26
+
+- add deleteTelegramMessage function ([0cf2253])
+- add doTelegramApiAction ([da6053e])
+- add markdownV2 to sendTelegramMessage mode ([8d20704])
+- add sendTelegramDocument function ([0cf2253])
+- fix sendTelegramMessage ([da6053e])
+- improve code ([8d20704])
+
+[da6053e]: https://github.com/cinnabar-forge/cinnagram/commit/da6053e
+[8d20704]: https://github.com/cinnabar-forge/cinnagram/commit/8d20704
+[0cf2253]: https://github.com/cinnabar-forge/cinnagram/commit/0cf2253
+
+
 ## [0.1.0](https://github.com/cinnabar-forge/cinnagram/releases/tag/v0.1.0) — 2024-07-23
 
 - add sendTelegramMessage function ([5f652ab])
@@ -18,4 +32,4 @@ Visit the link above to see all unreleased changes.
 [5f652ab]: https://github.com/cinnabar-forge/cinnagram/commit/5f652ab
 
 
-[unreleased]: https://github.com/cinnabar-forge/cinnagram/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/cinnabar-forge/cinnagram/compare/v0.2.0...HEAD
