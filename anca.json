@@ -4,7 +4,8 @@
       "name": "Timur Moziev",
       "github": "TimurRin",
       "email": "timur.moziev@gmail.com",
-      "type": "maintainer",
+      "type": "author",
+      "status": "active",
       "url": "https://timurrin.github.io/"
     }
   ],
@@ -32,6 +33,10 @@
   },
   "development": {
     "readme": {}
+  },
+  "namings": {
+    "npmPackage": "cinnagram",
+    "text": "Cinnagram"
   },
   "type": "library",
   "stack": "nodejs"

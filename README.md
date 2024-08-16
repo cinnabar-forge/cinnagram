@@ -29,9 +29,7 @@ sendTelegramMessage(
 
 Visit [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-Current maintainers:
-
-- Timur Moziev ([@TimurRin](https://github.com/TimurRin))
+Current maintainer - Timur Moziev ([@TimurRin](https://github.com/TimurRin))
 
 ## License
 
