@@ -8,6 +8,13 @@ Visit the link above to see all unreleased changes.
 
 [comment]: # (Insert new version after this line)
 
+## [0.2.2](https://github.com/cinnabar-forge/cinnagram/releases/tag/v0.2.2) — 2024-09-25
+
+- update npm vulnerable packages ([d580b80])
+
+[d580b80]: https://github.com/cinnabar-forge/cinnagram/commit/d580b80
+
+
 ## [0.2.1](https://github.com/cinnabar-forge/cinnagram/releases/tag/v0.2.1) — 2024-08-16
 
 - comply anca ([8d3f049])
@@ -40,4 +47,4 @@ Visit the link above to see all unreleased changes.
 [5f652ab]: https://github.com/cinnabar-forge/cinnagram/commit/5f652ab
 
 
-[unreleased]: https://github.com/cinnabar-forge/cinnagram/compare/v0.2.1...HEAD
+[unreleased]: https://github.com/cinnabar-forge/cinnagram/compare/v0.2.2...HEAD
