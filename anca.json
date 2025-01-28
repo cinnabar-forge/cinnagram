@@ -39,5 +39,6 @@
     "text": "Cinnagram"
   },
   "type": "library",
-  "stack": "nodejs"
+  "stack": "nodejs",
+  "public": true
 }
