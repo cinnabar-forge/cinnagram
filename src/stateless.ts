@@ -1,6 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
 import axios from "axios";
-import fs from "fs";
-import path from "path";
 
 /**
  * Create a Telegram API URL
@@ -65,7 +65,7 @@ export async function sendTelegramMessage(
       return messageResponse.data.result.message_id;
     }
   } catch (error) {
-    console.error(`Failed to send message:`, error);
+    console.error("Failed to send message:", error);
   }
   return null;
 }
@@ -95,7 +95,7 @@ export async function sendTelegramDocument(
     await axios.post(telegramUrl, form);
     return true;
   } catch (error) {
-    console.error(`Failed to send document:`, error);
+    console.error("Failed to send document:", error);
   }
   return false;
 }
@@ -119,7 +119,7 @@ export async function deleteTelegramMessage(
     });
     return true;
   } catch (error) {
-    console.error(`Failed to delete message:`, error);
+    console.error("Failed to delete message:", error);
   }
   return false;
 }
