@@ -27,19 +27,21 @@
     "test": "npm run check && npm run build:dev && mocha './build/dev/test'"
   },
   "dependencies": {
-    "axios": "1.7.9"
+    "axios": "1.10.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/chai": "5.0.1",
+    "@biomejs/biome": "2.0.0",
+    "@cinnabar-forge/meta": "0.4.3",
+    "@types/chai": "5.2.2",
     "@types/mocha": "10.0.10",
-    "@types/node": "22.12.0",
-    "@types/sinon": "17.0.3",
-    "chai": "5.1.2",
-    "mocha": "11.1.0",
-    "sinon": "19.0.2",
-    "tsup": "8.3.6",
-    "typescript": "5.7.3"
+    "@types/node": "24.0.3",
+    "@types/sinon": "17.0.4",
+    "anca": "0.1.1",
+    "chai": "5.2.0",
+    "mocha": "11.7.0",
+    "sinon": "21.0.0",
+    "tsup": "8.5.0",
+    "typescript": "5.8.3"
   },
   "engines": {
     "node": ">=18.0.0"
